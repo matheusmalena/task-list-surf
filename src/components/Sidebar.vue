@@ -1,6 +1,6 @@
 <template>
-  <header class="sombra">
-    <div class="d-flex flex-column align-items-center gap-3">
+  <header class="sombra ">
+    <div class="d-flex flex-column align-items-center gap-3 ">
       <div>
         <img
           src="https://i.postimg.cc/ZRHWQQRx/surf-logo.png"
@@ -22,6 +22,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
 header {
   padding: 1rem;
   background: linear-gradient(0deg, rgba(32, 75, 90, 1) 0%, rgba(119, 177, 185, 1) 100%);
@@ -32,6 +33,7 @@ img {
   width: 18rem;
   height: 16rem;
 }
+
 
 button {
   width: 50%;

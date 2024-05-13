@@ -9,10 +9,11 @@
           <input
             type="text"
             placeholder="Qual tarefa você quer iniciar?"
-            class="form-control p-16"
+            class="form-control p-16 border-2"
             v-model="descricao"
           />
         </div>
+        <button class="btnLimparFiltro" @click="limparFiltro"> <img src="https://i.postimg.cc/26c04JmF/filtro-limpo-1.png" alt=""></button>
         <div class="row align-items">
           <Temporizador @aoTemporizadorFinalizado="finalizarTarefa"/>
         </div>
@@ -43,7 +44,11 @@ export default defineComponent({
         descricao: this.descricao
       })
       this.descricao = ''
-    }
+    },
+    limparFiltro(){
+      this.descricao = ""
+      console.log('Filtro limpo!')
+    },
   }
 });
 </script>
@@ -73,4 +78,13 @@ export default defineComponent({
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.btnLimparFiltro{
+  background: none;
+  border: none;
+}
+
+.btnLimparFiltro img{
+  width: 32px;
+  height: auto;
+}
 </style>

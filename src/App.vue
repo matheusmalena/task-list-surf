@@ -1,6 +1,6 @@
 <template>
   <main class="d-flex">
-    <div class="">
+    <div class="bg-fundo">
       <Sidebar />
     </div>
     <div class="flex-grow-1 w-75 justify-content-center align-items-center sombra">

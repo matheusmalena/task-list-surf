@@ -3,11 +3,11 @@
     <Cronometro :tempoEmSegundos="tempoEmSegundos" />
     <button class="btn-border" @click="iniciar" :disabled="cronometroRodando">
       <span
-        ><img src="https://i.postimg.cc/ZnKz1m04/play-azul.png" class="icon-play" alt="" />Play</span
+        ><img src="../assets/icons/play2.png" class="icon-play" alt="" />Play</span
       >
     </button>
     <button class="btn-border" @click="finalizar" :disabled="!cronometroRodando">
-      <span><img src="../assets/icons/stop2.png" class="icon" alt="" />Stop</span>
+      <span><img src="../assets/icons/stop-button.png" class="icon" alt="" />Stop</span>
     </button>
   </div>
 </template>
@@ -74,5 +74,9 @@ img {
 
 .ml-5 {
   margin-left: 5rem;
+}
+
+span{
+  cursor: pointer;
 }
 </style>

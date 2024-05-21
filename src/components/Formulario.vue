@@ -13,7 +13,9 @@
             v-model="descricao"
           />
         </div>
-        <button class="btnLimparFiltro" @click="limparFiltro"> <img src="https://i.postimg.cc/26c04JmF/filtro-limpo-1.png" alt=""></button>
+        <button class="btnLimparFiltro" @click="limparFiltro"> <span class="material-symbols-outlined">
+          filter_list_off
+</span> </button>
         <div class="row align-items">
           <Temporizador @aoTemporizadorFinalizado="finalizarTarefa"/>
         </div>
@@ -81,10 +83,12 @@ export default defineComponent({
 .btnLimparFiltro{
   background: none;
   border: none;
+  color: #9ca7b0 !important;
 }
 
 .btnLimparFiltro img{
   width: 32px;
   height: auto;
+  color: #9ca7b0;
 }
 </style>

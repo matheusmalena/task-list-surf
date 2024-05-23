@@ -15,6 +15,16 @@
           <button class="btnLimparFiltro" @click="limparFiltro"> <span class="material-symbols-outlined">
           filter_list_off</span> </button>
         </div>
+        <div>
+          <div class="select">
+            <select v-model="idProjeto">
+              <option value="">Selecione o projeto</option>
+              <option :value="projeto.id" v-for="projeto in projetos" :key="projeto.id">
+                {{  projeto.nome }}
+              </option>
+            </select>
+          </div>
+        </div>
         
         <div class="d-flex row align-items temporizador">
           <Temporizador @aoTemporizadorFinalizado="finalizarTarefa"/>
@@ -25,8 +35,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
 import Temporizador from './Temporizador.vue'
+import { useStore } from "vuex";
+import {key} from '@/store'
 
 export default defineComponent({
   name: "Formulário",
@@ -36,14 +48,16 @@ export default defineComponent({
   },
   data () {
     return {
-      descricao: ''
+      descricao: '',
+      idProjeto: '',
     }
   },
   methods: {
     finalizarTarefa (tempoDecorrido: number) : void {
       this.$emit('aoSalvarTarefa', {
         duracaoEmSegundos: tempoDecorrido,
-        descricao: this.descricao
+        descricao: this.descricao,
+        projeto: this.projetos.find(proj => proj.id == this.idProjeto)
       })
       this.descricao = ''
     },
@@ -51,7 +65,13 @@ export default defineComponent({
       this.descricao = ""
       console.log('Filtro limpo!')
     },
-  }
+  },
+  setup() {
+      const store = useStore(key)
+      return {
+        projetos: computed(() => store.state.projetos)
+      }
+    }
 });
 </script>
 

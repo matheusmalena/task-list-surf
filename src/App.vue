@@ -28,6 +28,7 @@ export default defineComponent({
 main {
   --bg-primario: #fff;
   --texto-primario: #000;
+  height: 100vh;
 }
 main.modo-escuro {
   --bg-primario: #2b2d42;

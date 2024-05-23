@@ -3,7 +3,7 @@
     <div class="d-flex flex-column align-items-center gap-3 ">
       <div>
         <img
-          src="https://i.postimg.cc/ZRHWQQRx/surf-logo.png"
+          src="../assets\surf-logo.png"
           alt=""
           style="border-radius: 20px"
         />
@@ -92,8 +92,9 @@ li{
 
 @media only screen and (max-width: 768px) {
   header {
+    width: 100%;
     padding: 2.5rem;
-    height: auto;
+    height: 100%;
   }
 }
 </style>

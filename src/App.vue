@@ -1,9 +1,9 @@
 <template>
-  <main class="d-flex">
+  <main class="d-flex app-celular">
     <div class="bg-fundo">
       <Sidebar />
     </div>
-    <div class="flex-grow-1 w-75 justify-content-center align-items-center sombra">
+    <div class="flex-grow-1 justify-content-center align-items-center sombra">
       <router-view></router-view>
     </div>
   </main>
@@ -36,5 +36,32 @@ main.modo-escuro {
 }
 .conteudo {
   background-color: var(--bg-primario);
+}
+
+.sombra{
+    width: 75% !important;
+  }
+
+.bg-fundo{
+    width: 22%;
+    height: auto;
+  }
+
+@media screen and (max-width: 760px){
+  main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .bg-fundo{
+    width: 100% !important;
+    height: auto;
+  }
+
+  .sombra{
+    width: 100% !important;
+  }
+  
 }
 </style>

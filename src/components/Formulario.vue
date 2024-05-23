@@ -1,8 +1,8 @@
 <template>
-    <div class="row bg-light sombra">
-      <div class="col-8 d-flex p-5 align-items align-self-center">
+    <div class="d-flex row bg-light sombra w-100">
+      <div class=" d-flex p-4 align-items-center cronometro-celular">
         <div
-          class="w-100"
+          class="w-50 d-flex form"
           role="form"
           aria-label="Formulário para criação de uma nova tarefa"
         >
@@ -12,11 +12,11 @@
             class="form-control p-16 border-2"
             v-model="descricao"
           />
+          <button class="btnLimparFiltro" @click="limparFiltro"> <span class="material-symbols-outlined">
+          filter_list_off</span> </button>
         </div>
-        <button class="btnLimparFiltro" @click="limparFiltro"> <span class="material-symbols-outlined">
-          filter_list_off
-</span> </button>
-        <div class="row align-items">
+        
+        <div class="d-flex row align-items temporizador">
           <Temporizador @aoTemporizadorFinalizado="finalizarTarefa"/>
         </div>
       </div>
@@ -90,5 +90,20 @@ export default defineComponent({
   width: 32px;
   height: auto;
   color: #9ca7b0;
+}
+
+@media screen and (max-width: 760px){
+  .cronometro-celular{
+    justify-content: space-around;
+  }
+
+  .form-control{
+    width: 100%;
+  }
+
+  .temporizador{
+    display: flex;
+    gap: 1rem;
+  }
 }
 </style>

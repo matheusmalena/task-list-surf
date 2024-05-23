@@ -1,6 +1,7 @@
 <template>
-  <div class="d-flex align-items-center justify-content-between ml-5">
+  <div class="d-flex align-items-center justify-content-between ml-2 cronometro-celular">
     <Cronometro :tempoEmSegundos="tempoEmSegundos" />
+    <div class="ajuste-cronometro">
     <button class="btn-border" @click="iniciar" :disabled="cronometroRodando">
       <span
         ><img src="../assets/icons/play2.png" class="icon-play" alt="" />Play</span
@@ -9,6 +10,7 @@
     <button class="btn-border" @click="finalizar" :disabled="!cronometroRodando">
       <span><img src="../assets/icons/stop-button.png" class="icon" alt="" />Stop</span>
     </button>
+  </div>
   </div>
 </template>
 
@@ -72,11 +74,32 @@ img {
   margin-right: 2px;
 }
 
-.ml-5 {
-  margin-left: 5rem;
+.ml-2 {
+  margin-left: 1.5rem;
 }
 
 span{
   cursor: pointer;
+}
+
+.ajuste-cronometro{
+    display: flex;
+    gap: 1rem;
+  }
+
+@media screen and (max-width: 760px){
+  .cronometro-celular{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0;
+  }
+
+  .ajuste-cronometro{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
 }
 </style>

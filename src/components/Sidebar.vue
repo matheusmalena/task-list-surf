@@ -1,7 +1,7 @@
 <template>
-  <header class="sombra ">
-    <div class="d-flex flex-column align-items-center gap-3 ">
-      <div>
+  <header class="">
+    <div class="d-flex flex-column align-items-center justify-content-center gap-3 fundo-bg">
+      <div class="d-flex justify-content-center " >
         <img
           src="../assets\surf-logo.png"
           alt=""
@@ -13,7 +13,7 @@
       <li>
         <router-link to="/" class="routers">
           <span class="material-symbols-outlined">tv_options_edit_channels</span>
-          Tarefasssss
+          Tarefas
         </router-link>
       </li>
       <li>
@@ -41,12 +41,13 @@ export default defineComponent({
 header {
   padding: 1rem;
   background: linear-gradient(0deg, rgba(32, 75, 90, 1) 0%, rgba(119, 177, 185, 1) 100%);
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 img {
-  width: 18rem;
-  height: 16rem;
+  width: 90%;
+  height: auto;
 }
 
 
@@ -94,7 +95,21 @@ li{
   header {
     width: 100%;
     padding: 2.5rem;
-    height: 100%;
+    height: auto;
+  }
+  .fundo-bg{
+    width: 100%;
+  }
+
+  img{
+    width: 35%;
+    height: auto;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
   }
 }
 </style>

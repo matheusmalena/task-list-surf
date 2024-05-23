@@ -13,7 +13,7 @@
       <li>
         <router-link to="/" class="routers">
           <span class="material-symbols-outlined">tv_options_edit_channels</span>
-          Tarefas
+          Tarefasssss
         </router-link>
       </li>
       <li>

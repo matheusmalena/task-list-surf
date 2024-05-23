@@ -4,11 +4,11 @@
     <div class="ajuste-cronometro">
     <button class="btn-border" @click="iniciar" :disabled="cronometroRodando">
       <span
-        ><img src="../assets/icons/play2.png" class="icon-play" alt="" />Play</span
+        ><img src="../assets/icons/play2.png" class="icon-play icons" alt="" />Play</span
       >
     </button>
     <button class="btn-border" @click="finalizar" :disabled="!cronometroRodando">
-      <span><img src="../assets/icons/stop-button.png" class="icon" alt="" />Stop</span>
+      <span><img src="../assets/icons/stop-button.png" class="icon icons" alt="" />Stop</span>
     </button>
   </div>
   </div>
@@ -100,6 +100,27 @@ span{
     display: flex;
     flex-direction: row;
     gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 450px){
+  .btn-border {
+  border: 1px solid black;
+  width: 4rem;
+  height: 2rem;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+  .icons{
+    width: 1.2rem;
+    height: auto;
   }
 }
 </style>

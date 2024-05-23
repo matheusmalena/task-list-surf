@@ -106,4 +106,5 @@ export default defineComponent({
     gap: 1rem;
   }
 }
+
 </style>

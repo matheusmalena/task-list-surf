@@ -24,3 +24,11 @@
     },
   })
   </script>
+
+  <style scoped>
+  @media screen and (max-width: 450px){
+  strong {
+    font-size: 14px;
+  }
+}
+  </style>

@@ -102,7 +102,7 @@ li{
   }
 
   img{
-    width: 35%;
+    width: 45%;
     height: auto;
   }
 

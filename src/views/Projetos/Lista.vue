@@ -20,7 +20,7 @@
             <router-link :to="`/projetos/${projeto.id}`">
               <span class="material-symbols-outlined icon-edit">edit</span>
             </router-link>
-            <button class="delete" @click="excluir(projeto.id)">
+            <button class="btn-delete" @click="excluir(projeto.id)">
               <span class="material-symbols-outlined"> delete </span>
             </button>
           </td>
@@ -33,7 +33,8 @@
 <script lang="ts">
 import { computed, defineComponent } from "vue";
 import { useStore } from "@/store";
-import { EXCLUIR_PROJETO } from "@/store/tipo-mutacoes";
+import { EXCLUIR_PROJETO, NOTIFICAR } from "@/store/tipo-mutacoes";
+import { TipoNotificacao } from "@/interfaces/INotificacao";
 
 export default defineComponent({
   name: "Lista",
@@ -41,6 +42,11 @@ export default defineComponent({
     excluir(id: string){
         this.store.commit(EXCLUIR_PROJETO, id)
         console.log("Tarefa deletada!")
+        this.store.commit(NOTIFICAR, {
+          titulo: 'Projeto excluido!',
+          texto: 'Seu projeto foi removido com sucesso!',
+          tipo: TipoNotificacao.SUCESSO
+        })
     }
   },
   setup() {
@@ -58,6 +64,8 @@ export default defineComponent({
   width: 80%;
   margin: 2rem auto;
   border-collapse: collapse; /* Alterado para collapse */
+  background-color: transparent;
+  color: black !important;
 }
 
 thead,
@@ -69,15 +77,21 @@ tbody tr {
 
 thead tr,
 tbody tr {
-  border-bottom: 1px solid #598e98; /* Aplica borda de forma consistente */
+  border-bottom: 1px solid #598e98 !important; /* Aplica borda de forma consistente */
 }
 
 thead {
   margin-bottom: 0.5rem; /* Adiciona espaçamento entre thead e tbody */
+  color: black !important;
+}
+
+.table thead th {
+  color: black;
 }
 
 thead tr {
-  border-bottom: 1px solid #598e98;
+  border-bottom: 1px solid #598e98 !important;
+  color: black !important;
 }
 
 tbody {
@@ -99,6 +113,7 @@ tbody tr {
 
 tbody tr td {
   padding: 1rem; /* Espaço interno para as células */
+  color: black;
 }
 
 /* tbody tr {
@@ -115,6 +130,7 @@ tbody tr td {
   border: none;
   flex: 1;
   width: 32%;
+  color: black;
 }
 
 label {
@@ -155,13 +171,13 @@ form {
   color: black;
 }
 
-.delete{
+.btn-delete{
     background-color: transparent;
     border: none;
     text-decoration: none;
 }
 
-.delete span{
+.btn-delete span{
     background: transparent;
     color: red;
 }

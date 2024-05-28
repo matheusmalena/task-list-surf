@@ -2,7 +2,7 @@
     <Formulario @aoSalvarTarefa="salvarTarefa" />
     <div class="list-group gap-4 m-5">
       <Tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa" />
-      <Box v-if="listaEstaVazia">
+      <Box v-if="listaEstaVazia" class="box">
         Você não está muito produtivo hoje :(
       </Box>
     </div>
@@ -39,4 +39,11 @@
     },
   });
   </script>
+
+  <style scoped>
+  .box {
+    color: black;
+  }
+
+  </style>
   

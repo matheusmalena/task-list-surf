@@ -18,4 +18,10 @@ export default defineComponent ({
   .projetos{
     text-align: center;
   }
+
+  h1{
+    color: #598e98;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+  }
 </style>

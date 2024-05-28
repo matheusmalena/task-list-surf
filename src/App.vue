@@ -1,9 +1,15 @@
 <template>
   <main class="d-flex app-celular">
     <div class="bg-fundo">
+      <div class="notificacao-tela-celular">
+        <Notificacoes></Notificacoes>
+      </div>
       <Sidebar />
     </div>
     <div class="flex-grow-1 justify-content-center align-items-center sombra">
+      <div class="notificacao-tela-grande">
+        <Notificacoes></Notificacoes>
+      </div>
       <router-view></router-view>
     </div>
   </main>
@@ -11,17 +17,23 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import Notificacoes from './components/Notificacoes.vue';
 import Sidebar from './components/Sidebar.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
     Sidebar,
+    Notificacoes,
   },
 });
 </script>
 
 <style>
+body, strong {
+  color: black !important;
+}
+
 .lista {
   padding: 1.25rem;
 }
@@ -47,6 +59,14 @@ main.modo-escuro {
     height: auto;
   }
 
+  .notificacao-tela-grande{
+    display: block;
+  }
+
+  .notificacao-tela-celular{
+    display: none;
+  }
+
 @media screen and (max-width: 760px){
   main{
     display: flex;
@@ -61,6 +81,14 @@ main.modo-escuro {
 
   .sombra{
     width: 100% !important;
+  }
+
+  .notificacao-tela-grande{
+    display: none;
+  }
+
+  .notificacao-tela-celular{
+    display: block;
   }
   
 }

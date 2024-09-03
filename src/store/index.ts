@@ -17,26 +17,26 @@ export const store = createStore<Estado>({
         notificacoes: []
     },
     mutations: {
-        [ADICIONA_PROJETO] (state,  nomeDoProjeto: string){
+        [ADICIONA_PROJETO] (state: { projetos: IProjeto[]; },  nomeDoProjeto: string){
             const projeto = {
                 id: new Date().toISOString(),
                 nome: nomeDoProjeto
             } as IProjeto
             state.projetos.push(projeto)
         },
-        [ALTERA_PROJETO] (state, projeto: IProjeto) {
-            const index = state.projetos.findIndex(proj => proj.id == projeto.id)
+        [ALTERA_PROJETO] (state: { projetos: any[]; }, projeto: IProjeto) {
+            const index = state.projetos.findIndex((proj: { id: string; }) => proj.id == projeto.id)
             state.projetos[index] = projeto
         },
-        [EXCLUIR_PROJETO] (state, id: string){
-            state.projetos = state.projetos.filter(proj => proj.id != id)
+        [EXCLUIR_PROJETO] (state: { projetos: any[]; }, id: string){
+            state.projetos = state.projetos.filter((proj: { id: string; }) => proj.id != id)
         },
-        [NOTIFICAR] (state, novaNotificacao: INotificacao) {
+        [NOTIFICAR] (state: { notificacoes: INotificacao[]; }, novaNotificacao: INotificacao) {
             novaNotificacao.id = new Date().getTime()
             state.notificacoes.push(novaNotificacao)
 
             setTimeout(() => {
-                state.notificacoes = state.notificacoes.filter(notificacao => notificacao.id != novaNotificacao.id)
+                state.notificacoes = state.notificacoes.filter((notificacao: { id: number; }) => notificacao.id != novaNotificacao.id)
             }, 3000)
         }
     }

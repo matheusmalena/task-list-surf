@@ -1,11 +1,13 @@
 import IProjeto from "@/interfaces/IProjeto";
+import ITarefa from "@/interfaces/ITarefa";
 import { InjectionKey } from "vue";
 import { Store, createStore, useStore as vuexUseStore } from "vuex";
-import { ADICIONA_PROJETO, ALTERA_PROJETO, EXCLUIR_PROJETO, NOTIFICAR, EXCLUIR_TODOS_PROJETOS } from "./tipo-mutacoes";
+import { ADICIONA_PROJETO, ALTERA_PROJETO, EXCLUIR_PROJETO, NOTIFICAR, EXCLUIR_TODOS_PROJETOS, ADICIONA_TAREFA, EXCLUIR_TAREFA, ATUALIZA_TAREFA } from "./tipo-mutacoes";
 import { INotificacao } from "@/interfaces/INotificacao";
 
 interface Estado {
   projetos: IProjeto[];
+  tarefas: ITarefa[];
   notificacoes: INotificacao[];
 }
 
@@ -13,16 +15,22 @@ export const key: InjectionKey<Store<Estado>> = Symbol();
 
 function saveToLocalStorage(state: Estado) {
   localStorage.setItem('projetos', JSON.stringify(state.projetos));
+  localStorage.setItem('tarefas', JSON.stringify(state.tarefas));
 }
 
-function loadFromLocalStorage(): IProjeto[] {
-  const data = localStorage.getItem('projetos');
-  return data ? JSON.parse(data) : [];
+function loadFromLocalStorage(): { projetos: IProjeto[], tarefas: ITarefa[] } {
+  const projetos = localStorage.getItem('projetos');
+  const tarefas = localStorage.getItem('tarefas');
+  return {
+    projetos: projetos ? JSON.parse(projetos) : [],
+    tarefas: tarefas ? JSON.parse(tarefas) : []
+  };
 }
 
 export const store = createStore<Estado>({
   state: {
-    projetos: loadFromLocalStorage(),
+    projetos: loadFromLocalStorage().projetos,
+    tarefas: loadFromLocalStorage().tarefas,
     notificacoes: [],
   },
   mutations: {
@@ -52,6 +60,21 @@ export const store = createStore<Estado>({
     },
     [EXCLUIR_TODOS_PROJETOS](state) {
       state.projetos = [];
+      saveToLocalStorage(state);
+    },
+    [ADICIONA_TAREFA](state, tarefa: ITarefa) {
+      state.tarefas.push(tarefa);
+      saveToLocalStorage(state);
+    },
+    [ATUALIZA_TAREFA](state, tarefa: ITarefa) {
+      const index = state.tarefas.findIndex(t => t.descricao === tarefa.descricao); // Ajuste conforme sua lógica
+      if (index !== -1) {
+        state.tarefas[index] = tarefa;
+      }
+      saveToLocalStorage(state);
+    },
+    [EXCLUIR_TAREFA](state, descricao: string) {
+      state.tarefas = state.tarefas.filter(tarefa => tarefa.descricao !== descricao); // Ajuste conforme sua lógica
       saveToLocalStorage(state);
     },
   },

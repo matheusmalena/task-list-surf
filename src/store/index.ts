@@ -1,7 +1,7 @@
 import IProjeto from "@/interfaces/IProjeto";
 import { InjectionKey } from "vue";
 import { Store, createStore, useStore as vuexUseStore } from "vuex";
-import { ADICIONA_PROJETO, ALTERA_PROJETO, EXCLUIR_PROJETO, NOTIFICAR } from "./tipo-mutacoes";
+import { ADICIONA_PROJETO, ALTERA_PROJETO, EXCLUIR_PROJETO, NOTIFICAR, EXCLUIR_TODOS_PROJETOS } from "./tipo-mutacoes";
 import { INotificacao } from "@/interfaces/INotificacao";
 
 interface Estado {
@@ -49,6 +49,10 @@ export const store = createStore<Estado>({
       setTimeout(() => {
         state.notificacoes = state.notificacoes.filter(n => n.id !== notificacao.id);
       }, 3000);
+    },
+    [EXCLUIR_TODOS_PROJETOS](state) {
+      state.projetos = [];
+      saveToLocalStorage(state);
     },
   },
 });

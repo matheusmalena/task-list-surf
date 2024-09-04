@@ -10,6 +10,9 @@
           <th>ID</th>
           <th>Nome</th>
           <th>Ações</th>
+          <th>
+            <button @click="deletarTodosProjetos" class="btn-limpar-todas" >Excluir tudo  <span class="material-symbols-outlined"> delete </span></button>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +27,7 @@
               <span class="material-symbols-outlined"> delete </span>
             </button>
           </td>
+          <td></td>
         </tr>
       </tbody>
     </table>
@@ -33,7 +37,7 @@
 <script lang="ts">
 import { computed, defineComponent } from "vue";
 import { useStore } from "@/store";
-import { EXCLUIR_PROJETO, NOTIFICAR } from "@/store/tipo-mutacoes";
+import { EXCLUIR_PROJETO, NOTIFICAR, EXCLUIR_TODOS_PROJETOS } from "@/store/tipo-mutacoes";
 import { TipoNotificacao } from "@/interfaces/INotificacao";
 
 export default defineComponent({
@@ -45,6 +49,15 @@ export default defineComponent({
         this.store.commit(NOTIFICAR, {
           titulo: 'Projeto excluido!',
           texto: 'Seu projeto foi removido com sucesso!',
+          tipo: TipoNotificacao.SUCESSO
+        })
+    },
+    deletarTodosProjetos() {
+      this.store.commit(EXCLUIR_TODOS_PROJETOS)
+      console.log("Projetos excluidos!")
+      this.store.commit(NOTIFICAR, {
+          titulo: 'Projetos excluidos!',
+          texto: 'Todos os seus projetos foram removidos com sucesso!',
           tipo: TipoNotificacao.SUCESSO
         })
     }
@@ -63,48 +76,52 @@ export default defineComponent({
 .table {
   width: 80%;
   margin: 2rem auto;
-  border-collapse: collapse; /* Alterado para collapse */
+  border-collapse: collapse;
   background-color: transparent;
   color: black !important;
 }
 
-thead,
-tbody tr {
-  display: table; /* Faz com que se comportem como uma linha de tabela */
-  width: 100%; /* Garante que ocupem o mesmo espaço */
-  table-layout: fixed; /* Ajuda a manter colunas de largura igual */
-}
-
 thead tr,
 tbody tr {
-  border-bottom: 1px solid #598e98 !important; /* Aplica borda de forma consistente */
+  border-bottom: 1px solid #598e98 !important;
+}
+
+thead tr th {
+  width: 30%;
+  border: none !important;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
 
 thead {
-  margin-bottom: 0.5rem; /* Adiciona espaçamento entre thead e tbody */
+  margin-bottom: 0.5rem;
   color: black !important;
 }
 
 .table thead th {
   color: black;
+  max-width: 30% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 thead tr {
-  border-bottom: 1px solid #598e98 !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 3px solid #598e98 !important;
   color: black !important;
 }
 
-tbody {
-  display: flex; /* Permite definir um espaçamento entre thead e tbody */
-  justify-content: space-between;
-  flex-direction: column;
-  width: 100%;
-}
-
 tbody tr {
-  border-radius: 6px; /* Mantém o estilo de borda arredondada */
-  margin-top: 1rem; /* Espaçamento entre linhas */
-  background-color: #fff; /* Fundo branco para as linhas */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-radius: 6px;
+  margin-top: 1rem;
+  background-color: #fff;
   border: none;
   margin-top: 1rem;
   border: 1px solid #a4a4a4;
@@ -112,24 +129,14 @@ tbody tr {
 }
 
 tbody tr td {
-  padding: 1rem; /* Espaço interno para as células */
-  color: black;
-}
-
-/* tbody tr {
-    display: flex;
-    width: 100%;
-    padding: 1rem; 
-    box-sizing: border-box;
-    border: 1px solid black;
-    border-radius: 6px;
-    margin-top: 1rem;
-  } */
-
-tbody tr td {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
   border: none;
-  flex: 1;
-  width: 32%;
+  text-align: center;
+  word-wrap: break-word;
+  width: 30% !important;
   color: black;
 }
 
@@ -180,6 +187,28 @@ form {
 .btn-delete span{
     background: transparent;
     color: red;
+}
+
+.btn-limpar-todas {
+  display: flex;
+  align-items: center;
+  background-color: red;
+  border-radius: 10px;
+  color: white !important;
+  padding: 0.5rem;
+}
+
+.btn-limpar-todas:hover {
+  display: flex;
+  align-items: center;
+  background-color: rgb(204, 37, 37);
+  border-radius: 10px;
+  color: white !important;
+  padding: 0.5rem;
+}
+
+.btn-limpar-todas span {
+  font-size: 22px;
 }
 
 @media screen and (max-width: 760px) {

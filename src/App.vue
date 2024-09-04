@@ -33,6 +33,7 @@ export default defineComponent({
 :root{
   --brown: #d4bfa3;
   --brown-hover: #bba88f;
+  --blue-hover: linear-gradient(0deg, rgba(32, 75, 90, 1) 0%, rgba(119, 177, 185, 1) 100%);
 }
 
 body, strong {

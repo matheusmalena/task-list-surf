@@ -1,43 +1,50 @@
 <template>
   <header class="">
     <div class="d-flex flex-column align-items-center justify-content-center gap-3 fundo-bg">
-      <div class="d-flex justify-content-center " >
+      <div class="d-flex justify-content-center">
         <img
-          src="../assets\surf-logo.png"
-          alt=""
+          src="../assets/surf-logo.png"
+          alt="Logo"
           style="border-radius: 20px"
         />
       </div>
       <nav>
-    <ul>
-      <li>
-        <router-link to="/" class="routers">
-          <span class="material-symbols-outlined">tv_options_edit_channels</span>
-          Tarefas
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/projetos" class="routers">
-          <span class="material-symbols-outlined">tactic</span>
-          Projetos
-        </router-link>
-      </li>
-    </ul>
-  </nav>
-  </div>
+        <ul>
+          <li>
+            <router-link 
+              to="/" 
+              class="routers" 
+              exact-active-class="active-link"
+            >
+              <span class="material-symbols-outlined">tv_options_edit_channels</span>
+              Tarefas
+            </router-link>
+          </li>
+          <li>
+            <router-link 
+              to="/projetos" 
+              class="routers" 
+              exact-active-class="active-link"
+            >
+              <span class="material-symbols-outlined">tactic</span>
+              Projetos
+            </router-link>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: "Sidebar",
+  name: 'Sidebar',
 });
 </script>
 
 <style scoped>
-
 header {
   padding: 1rem;
   background: linear-gradient(0deg, rgba(32, 75, 90, 1) 0%, rgba(119, 177, 185, 1) 100%);
@@ -49,7 +56,6 @@ img {
   width: 90%;
   height: auto;
 }
-
 
 button {
   width: 50%;
@@ -67,12 +73,12 @@ ul {
   padding: 0;
 }
 
-li{
+li {
   list-style-type: none;
   margin-bottom: 10px;
 }
 
-.routers{
+.routers {
   width: 100%;
   padding: 0.5rem;
   text-decoration: none;
@@ -91,7 +97,12 @@ li{
   border: 1px solid var(--brown-hover);
 }
 
-.material-symbols-outlined{
+.active-link {
+  background: var(--brown-hover);
+  border: 1px solid var(--brown-hover);
+}
+
+.material-symbols-outlined {
   color: black;
   font-size: 22px;
 }
@@ -102,11 +113,11 @@ li{
     padding: 2.5rem;
     height: auto;
   }
-  .fundo-bg{
+  .fundo-bg {
     width: 100%;
   }
 
-  img{
+  img {
     width: 45%;
     height: auto;
   }

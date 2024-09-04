@@ -72,6 +72,10 @@ export default defineComponent({
   color: #037a7a !important;
   font-weight: 600;
   text-transform: uppercase;
+  max-width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-delete span {
@@ -81,6 +85,7 @@ export default defineComponent({
 
 .btn-delete span:hover {
   transform: translateY(-5px);
+  color: red;
 }
 
 @media screen and (max-width: 760px) {

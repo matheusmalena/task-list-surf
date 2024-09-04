@@ -30,6 +30,10 @@ export default defineComponent({
 </script>
 
 <style>
+:root{
+  --brown-hover: #bba88f;
+}
+
 body, strong {
   color: black !important;
 }

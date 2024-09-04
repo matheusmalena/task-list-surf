@@ -86,6 +86,11 @@ li{
   font-size: 16px;
 }
 
+.routers:hover {
+  background-color: var(--brown-hover);
+  border: 1px solid var(--brown-hover);
+}
+
 .material-symbols-outlined{
   color: black;
   font-size: 22px;

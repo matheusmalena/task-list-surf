@@ -121,14 +121,31 @@ export default defineComponent({
 
 .btnLimparFiltro {
   background: none;
-  border: none;
   color: #9ca7b0 !important;
+  width: 35px;
+  height:35px;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btnLimparFiltro img {
   width: 32px;
   height: auto;
   color: #9ca7b0;
+}
+
+.btnLimparFiltro:hover {
+  width:35px;
+  height:35px;
+  background-color: rgba(234, 233, 233, 0.853);
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .selecionar-projeto {

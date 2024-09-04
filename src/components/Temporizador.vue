@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex align-items-center justify-content-between ml-2 cronometro-celular">
+  <div class="d-flex align-items-center justify-content-between ml-2 cronometro-celular gap-3">
     <Cronometro :tempoEmSegundos="tempoEmSegundos" />
     <div class="ajuste-cronometro">
     <button class="btn-border" @click="iniciar" :disabled="cronometroRodando">
@@ -67,6 +67,10 @@ export default defineComponent({
   width: 80px;
   height: 40px;
   border-radius: 4px;
+}
+
+.btn-border:hover{
+  background-color: rgb(211, 211, 211);
 }
 
 img {

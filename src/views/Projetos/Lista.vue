@@ -2,7 +2,7 @@
   <section class="d-flex justify-content-center flex-column align-items-center">
     <router-link to="/projetos/novo" class="button">
       <span class="material-symbols-outlined icon-more">add_circle</span>
-      <span>Novo projeto</span>
+      <span class="btn-bronw" >Novo projeto</span>
     </router-link>
     <table class="table">
       <thead>
@@ -218,6 +218,10 @@ form {
 
 .icon-edit:hover, .btn-delete span:hover {
   transform: translateY(-5px);
+}
+
+.button:hover{
+  background-color: var(--brown-hover);
 }
 @media screen and (max-width: 760px) {
   input {

@@ -79,7 +79,7 @@ export default defineComponent({
 }
 
 .styled-table thead {
-  background: linear-gradient(0deg, rgba(32, 75, 90, 1) 0%, rgba(119, 177, 185, 1) 100%);
+  background-color: #4c7e89;
   color: #ffffff;
   text-align: left;
   font-weight: bold;

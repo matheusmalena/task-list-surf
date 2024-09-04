@@ -3,23 +3,26 @@
     <div class="d-flex justify-content-between box-celular">
       <div class="info-celular">
         <h3>Tarefa:</h3>
-        <span class="title-task" >Tarefa  </span>
+        <span class="title-task">Tarefa</span>
         <div class="d-flex">{{ tarefa.descricao || "Tarefa sem descrição" }}</div>
       </div>
       <div class="info-celular">
         <h3>Projeto:</h3>
-        <span class="title-task" >Projeto</span>
+        <span class="title-task">Projeto</span>
         <div>
           {{ tarefa.projeto?.nome || "N/D" }}
         </div>
       </div>
       <div class="info-celular">
         <h3>Tempo:</h3>
-        <span class="title-task" >Tempo</span>
+        <span class="title-task">Tempo</span>
         <div class="col-2">
           <Cronometro :tempoEmSegundos="tarefa.duracaoEmSegundos" />
         </div>
       </div>
+      <button class="btn-delete" @click="excluirTarefa">
+        <span class="material-symbols-outlined icon-delete"> delete </span>
+      </button>
     </div>
   </Box>
 </template>
@@ -29,6 +32,8 @@ import { defineComponent, PropType } from "vue";
 import Cronometro from "./Cronometro.vue";
 import ITarefa from "../interfaces/ITarefa";
 import Box from "./Box.vue";
+import { useStore } from '@/store/index';
+import { EXCLUIR_TAREFA } from '@/store/tipo-mutacoes';
 
 export default defineComponent({
   name: "Tarefa",
@@ -42,11 +47,24 @@ export default defineComponent({
       required: true,
     },
   },
+  setup(props) {
+    const store = useStore();
+
+    const excluirTarefa = () => {
+      if (props.tarefa) {
+        store.commit(EXCLUIR_TAREFA, props.tarefa.descricao);
+      }
+    };
+
+    return {
+      excluirTarefa,
+    };
+  },
 });
 </script>
 
 <style>
-.info-celular h3{
+.info-celular h3 {
   display: none;
 }
 
@@ -54,6 +72,15 @@ export default defineComponent({
   color: #037a7a !important;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+.btn-delete span {
+  transition: transform 0.3s ease-in-out;
+  display: inline-block;
+}
+
+.btn-delete span:hover {
+  transform: translateY(-5px);
 }
 
 @media screen and (max-width: 760px) {

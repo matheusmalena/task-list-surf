@@ -15,7 +15,7 @@ import Formulario from '../components/Formulario.vue';
 import Tarefa from '../components/Tarefa.vue';
 import Box from '../components/Box.vue';
 import ITarefa from '../interfaces/ITarefa';
-import { ADICIONA_TAREFA, EXCLUIR_TAREFA } from '@/store/tipo-mutacoes';
+import { ADICIONA_TAREFA } from '@/store/tipo-mutacoes';
 
 export default defineComponent({
   name: 'Tarefas',
@@ -33,7 +33,7 @@ export default defineComponent({
     const salvarTarefa = (tarefa: ITarefa) => {
       store.commit(ADICIONA_TAREFA, tarefa);
     };
-
+    
     return {
       tarefas,
       listaEstaVazia,

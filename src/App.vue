@@ -31,6 +31,7 @@ export default defineComponent({
 
 <style>
 :root{
+  --brown: #d4bfa3;
   --brown-hover: #bba88f;
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex row bg-light sombra w-100">
+  <div class="d-flex justify-content-between row bg-light sombra w-100">
     <div class="d-flex p-4 align-items-center cronometro-celular">
       <div
         class="w-50 d-flex form gap-2"
@@ -96,8 +96,15 @@ export default defineComponent({
   color: var(--texto-primario) !important;
   background-color: var(--bg-primario);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100vh;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+}
+
+.cronometro-celular {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .p-1 {

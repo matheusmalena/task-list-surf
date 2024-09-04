@@ -24,7 +24,7 @@
               <span class="material-symbols-outlined icon-edit">edit</span>
             </router-link>
             <button class="btn-delete" @click="excluir(projeto.id)">
-              <span class="material-symbols-outlined"> delete </span>
+              <span class="material-symbols-outlined icon-delete"> delete </span>
             </button>
           </td>
           <td></td>
@@ -211,6 +211,14 @@ form {
   font-size: 22px;
 }
 
+.icon-edit, .btn-delete span {
+  transition: transform 0.3s ease-in-out;
+  display: inline-block;
+}
+
+.icon-edit:hover, .btn-delete span:hover {
+  transform: translateY(-5px);
+}
 @media screen and (max-width: 760px) {
   input {
     width: 60%;

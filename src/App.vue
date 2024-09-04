@@ -55,7 +55,7 @@ main.modo-escuro {
   }
 
 .bg-fundo{
-    width: 22%;
+    width: 18%;
     height: auto;
   }
 

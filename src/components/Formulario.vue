@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-between row bg-light sombra w-100">
-    <div class="d-flex p-4 align-items-center cronometro-celular">
+    <div class="d-flex w-100 p-4 align-items-center cronometro-celular">
       <div
         class="w-50 d-flex form gap-2"
         role="form"

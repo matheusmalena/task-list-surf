@@ -72,7 +72,7 @@ export default defineComponent({
 
 .styled-table th,
 .styled-table td {
-  padding: 18px 15px;
+  padding: 20px 15px;
   text-align: center;
   white-space: nowrap;
   width: 30% !important;

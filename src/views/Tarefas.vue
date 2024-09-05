@@ -57,8 +57,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.box {
-  color: black;
+.box strong {
+  color: rgb(99, 99, 99) !important;
 }
 
 .box-nodata {
@@ -70,7 +70,7 @@ export default defineComponent({
 }
 
 img {
-  width: 120px;
+  width: 130px;
   height: auto;
 }
 

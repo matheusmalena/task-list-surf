@@ -97,7 +97,7 @@ export default defineComponent({
 }
 
 .btn-delete span:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
   color: #ff1c1c;
 }
 

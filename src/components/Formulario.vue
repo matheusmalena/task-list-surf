@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex w-100 sombra p-4 align-items-center cronometro-celular">
       <div
-        class="w-50 d-flex form gap-2"
+        class="w-50 div-input d-flex form gap-2"
         role="form"
         aria-label="Formulário para criação de uma nova tarefa"
       >
@@ -91,11 +91,11 @@ export default defineComponent({
 }
 
 .form {
-  width: 100%; /* O formulário ocupa 100% da largura */
+  width: 100%;
 }
 
 .form-control {
-  width: 100%; /* O campo de input ocupa 100% da largura disponível */
+  width: 100%;
 }
 
 .formulario {
@@ -169,12 +169,19 @@ export default defineComponent({
   }
 
   .form-control {
-    width: 100%;
+    width: 250px;
   }
 
   .temporizador {
     display: flex;
     gap: 1rem;
+  }
+
+  .div-input {
+    width: 100% !important;
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
   }
 }
 </style>

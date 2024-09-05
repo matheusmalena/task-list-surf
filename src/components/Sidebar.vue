@@ -54,7 +54,7 @@ header {
   height: 100vh;
 }
 
-img {
+video {
   width: 90%;
   height: auto;
 }
@@ -129,5 +129,9 @@ li {
     flex-direction: row;
     gap: 1rem;
   }
+  video {
+  width: 60%;
+  height: auto;
+}
 }
 </style>

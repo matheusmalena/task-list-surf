@@ -52,5 +52,19 @@
     font-size: 18px;
     vertical-align: middle;
   }
+
+  @media screen and (max-width: 760px) {
+    .footer-container {
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    font-size: 10px !important;
+    width: 100%;
+    margin-left: 0rem;
+  }
+  }
   </style>
   

@@ -87,7 +87,7 @@ export default defineComponent({
 .btn-delete {
   background: none;
   border: none;
-  color: #ff5c5c;
+  color: #181818;
   cursor: pointer;
 }
 

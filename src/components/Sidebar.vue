@@ -10,6 +10,7 @@
           autoplay
           loop
           muted
+          @canplay="onVideoCanPlay"
         ></video>
       </div>
       <nav>
@@ -37,9 +38,11 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Sidebar",
-  mounted() {
-    this.$emit("loaded");
-  },
+  methods: {
+    onVideoCanPlay() {
+      this.$emit('loaded');
+    }
+  }
 });
 </script>
 

@@ -49,7 +49,7 @@ header {
   padding: 1rem;
   background: linear-gradient(0deg, rgba(32, 75, 90, 1) 0%, rgba(119, 177, 185, 1) 100%);
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 img {

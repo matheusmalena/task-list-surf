@@ -36,6 +36,12 @@ export default defineComponent({
   --blue-hover: linear-gradient(0deg, rgba(32, 75, 90, 1) 0%, rgba(119, 177, 185, 1) 100%);
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body, strong {
   color: black !important;
 }
@@ -46,7 +52,9 @@ body, strong {
 main {
   --bg-primario: #fff;
   --texto-primario: #000;
+  display: flex;
   height: 100vh;
+  overflow: hidden;
 }
 main.modo-escuro {
   --bg-primario: #2b2d42;
@@ -58,11 +66,13 @@ main.modo-escuro {
 
 .sombra{
     width: 75% !important;
+    overflow-y: auto;
   }
 
 .bg-fundo{
     width: 18%;
-    height: auto;
+    height: 100vh;
+    overflow-y: auto;
   }
 
   .notificacao-tela-grande{

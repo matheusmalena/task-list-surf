@@ -90,6 +90,14 @@ export default defineComponent({
   margin-left: 0 !important;
 }
 
+.form {
+  width: 100%; /* O formulário ocupa 100% da largura */
+}
+
+.form-control {
+  width: 100%; /* O campo de input ocupa 100% da largura disponível */
+}
+
 .formulario {
   color: var(--texto-primario) !important;
   background-color: var(--bg-primario);
@@ -103,6 +111,7 @@ export default defineComponent({
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  width: 100% !important;
 }
 
 .p-1 {
@@ -149,6 +158,7 @@ export default defineComponent({
 .selecionar-projeto {
   background-color: white !important;
   color: black !important;
+  width: 100% !important;;
 }
 
 @media screen and (max-width: 760px) {

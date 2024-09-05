@@ -1,31 +1,27 @@
 <template>
   <header class="">
-    <div class="d-flex flex-column align-items-center justify-content-center gap-3 fundo-bg">
+    <div
+      class="d-flex flex-column align-items-center justify-content-center gap-3 fundo-bg"
+    >
       <div class="d-flex justify-content-center">
-        <img
-          src="../assets/surf-logo.png"
-          alt="Logo"
+        <video
           style="border-radius: 20px"
-        />
+          src="../assets/video-logo.mp4"
+          autoplay
+          loop
+          muted
+        ></video>
       </div>
       <nav>
         <ul>
           <li>
-            <router-link 
-              to="/" 
-              class="routers" 
-              exact-active-class="active-link"
-            >
+            <router-link to="/" class="routers" exact-active-class="active-link">
               <span class="material-symbols-outlined">tv_options_edit_channels</span>
               Tarefas
             </router-link>
           </li>
           <li>
-            <router-link 
-              to="/projetos" 
-              class="routers" 
-              exact-active-class="active-link"
-            >
+            <router-link to="/projetos" class="routers" exact-active-class="active-link">
               <span class="material-symbols-outlined">tactic</span>
               Projetos
             </router-link>
@@ -37,13 +33,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'Sidebar',
+  name: "Sidebar",
   mounted() {
-    this.$emit('loaded');
-  }
+    this.$emit("loaded");
+  },
 });
 </script>
 

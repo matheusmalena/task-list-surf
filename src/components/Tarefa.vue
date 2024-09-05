@@ -1,14 +1,6 @@
 <template>
   <div class="table-container">
     <table class="styled-table">
-      <thead>
-        <tr>
-          <th><span class="title-task">Tarefa</span></th>
-          <th><span class="title-task">Projeto</span></th>
-          <th><span class="title-task">Tempo</span></th>
-          <th></th>
-        </tr>
-      </thead>
       <tbody>
         <tr>
           <td data-label="Tarefa">{{ tarefa.descricao || "Tarefa sem descrição" }}</td>
@@ -78,27 +70,18 @@ export default defineComponent({
   overflow: hidden;
 }
 
-.styled-table thead {
-  background-color: #4c7e89;
-  color: #ffffff;
-  text-align: left;
-  font-weight: bold;
-}
-
 .styled-table th,
 .styled-table td {
-  padding: 12px 15px;
-  text-align: left;
+  padding: 18px 15px;
+  text-align: center;
   white-space: nowrap;
+  width: 30% !important;
 }
 
 .styled-table tbody tr {
-  border-bottom: 1px solid #dddddd;
+  background-color: #faf0ca;
+  border-bottom: 1px solid #faf0ca;
   transition: background-color 0.3s ease;
-}
-
-.styled-table tbody tr:hover {
-  background-color: #f1f1f1;
 }
 
 .btn-delete {

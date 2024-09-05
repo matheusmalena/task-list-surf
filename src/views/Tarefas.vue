@@ -1,5 +1,7 @@
 <template>
-  <Formulario @aoSalvarTarefa="salvarTarefa" />
+  <div class="d-flex row w-100" >
+    <Formulario @aoSalvarTarefa="salvarTarefa" />
+  </div>
   <div class="list-group gap-4 m-5">
     <div class="div-table" >
       <table>

@@ -76,7 +76,7 @@ main {
   --bg-primario: #fff;
   --texto-primario: #000;
   display: flex;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
 }
 main.modo-escuro {
@@ -94,7 +94,7 @@ main.modo-escuro {
 
 .bg-fundo{
     width: 18%;
-    height: 100vh;
+    height: 100%;
     overflow-y: auto;
   }
 

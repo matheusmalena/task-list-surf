@@ -1,6 +1,7 @@
 <template>
   <main class="d-flex app-celular">
-    <div class="bg-fundo">
+    <Spinner v-if="isLoading" />
+    <div class="bg-fundo" v-else>
       <div class="notificacao-tela-celular">
         <Notificacoes></Notificacoes>
       </div>
@@ -10,24 +11,46 @@
       <div class="notificacao-tela-grande">
         <Notificacoes></Notificacoes>
       </div>
-      <router-view></router-view>
+      <router-view @loaded="setLoading(false)"></router-view>
     </div>
+    <Footer />
   </main>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import Notificacoes from './components/Notificacoes.vue';
 import Sidebar from './components/Sidebar.vue';
+import Spinner from './components/Spinner.vue';
+import Footer from './components/Footer.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
     Sidebar,
     Notificacoes,
+    Spinner,
+    Footer
   },
+  setup() {
+    const isLoading = ref(true);
+
+    const setLoading = (status: boolean) => {
+      isLoading.value = status;
+    };
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return {
+      isLoading,
+      setLoading
+    };
+  }
 });
 </script>
+
 
 <style>
 :root{

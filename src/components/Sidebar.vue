@@ -41,6 +41,9 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'Sidebar',
+  mounted() {
+    this.$emit('loaded');
+  }
 });
 </script>
 

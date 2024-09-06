@@ -105,6 +105,10 @@ span{
     flex-direction: row;
     gap: 1rem;
   }
+
+  button {
+    width: 100px !important;
+  }
 }
 
 @media screen and (max-width: 450px){

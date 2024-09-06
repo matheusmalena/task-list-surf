@@ -166,10 +166,11 @@ export default defineComponent({
     justify-content: space-around;
     flex-direction: column;
     gap: 12px;
+    width: 100%; /* Garante que preencha a largura total */
   }
 
   .form-control {
-    width: 250px;
+    width: 100%; /* Ajusta o input para ocupar a largura completa */
   }
 
   .temporizador {

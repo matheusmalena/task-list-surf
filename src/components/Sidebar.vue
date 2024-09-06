@@ -109,18 +109,20 @@ li {
   font-size: 22px;
 }
 
-@media only screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   header {
     width: 100%;
     padding: 2.5rem;
-    height: auto;
+    height: 100%;
+    padding: 6.5rem;
   }
   .fundo-bg {
     width: 100%;
+    height: 100%;
   }
 
-  img {
-    width: 45%;
+  video {
+    width: 60%;
     height: auto;
   }
 
@@ -129,9 +131,5 @@ li {
     flex-direction: row;
     gap: 1rem;
   }
-  video {
-  width: 60%;
-  height: auto;
-}
 }
 </style>

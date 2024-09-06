@@ -88,4 +88,10 @@ table {
   white-space: nowrap;
   border-bottom: 3px solid #598e98;
 }
+
+@media screen and (max-width: 768px) {
+  thead {
+    display: none;
+  }
+}
 </style>

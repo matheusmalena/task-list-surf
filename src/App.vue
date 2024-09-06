@@ -13,7 +13,6 @@
       </div>
       <router-view @loaded="setLoading(false)"></router-view>
     </div>
-    <Footer />
   </main>
 </template>
 
@@ -22,7 +21,6 @@ import { defineComponent, ref } from 'vue';
 import Notificacoes from './components/Notificacoes.vue';
 import Sidebar from './components/Sidebar.vue';
 import Spinner from './components/Spinner.vue';
-import Footer from './components/Footer.vue';
 
 export default defineComponent({
   name: 'App',
@@ -30,7 +28,6 @@ export default defineComponent({
     Sidebar,
     Notificacoes,
     Spinner,
-    Footer
   },
   setup() {
     const isLoading = ref(true);
@@ -106,29 +103,33 @@ main.modo-escuro {
     display: none;
   }
 
-@media screen and (max-width: 760px){
-  main{
+  @media screen and (max-width: 760px){
+  main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Ajuste para alinhar corretamente */
+    height: 100vh; /* Força a altura da tela inteira */
+    overflow: hidden;
   }
 
-  .bg-fundo{
+  .bg-fundo {
     width: 100% !important;
     height: auto;
+    flex-grow: 1; /* Ocupa o espaço restante */
   }
 
-  .sombra{
+  .sombra {
     width: 100% !important;
+    flex-grow: 1; /* Faz o conteúdo crescer para preencher a tela */
+    overflow-y: auto;
   }
 
-  .notificacao-tela-grande{
+  .notificacao-tela-grande {
     display: none;
   }
 
-  .notificacao-tela-celular{
+  .notificacao-tela-celular {
     display: block;
   }
-  
 }
 </style>

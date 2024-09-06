@@ -134,5 +134,13 @@ export default defineComponent({
     color: #037a7a;
     text-align: left;
   }
+.styled-table th,
+.styled-table td {
+  padding: 20px 15px;
+  text-align: center;
+  white-space: nowrap;
+  width: 100% !important;
+}
+
 }
 </style>

@@ -2,14 +2,22 @@
   <div class="d-flex align-items-center justify-content-between ml-2 cronometro-celular gap-3">
     <Cronometro :tempoEmSegundos="tempoEmSegundos" />
     <div class="ajuste-cronometro">
-    <button class="btn-border" @click="iniciar" :disabled="cronometroRodando">
-      <span
-        ><img src="../assets/icons/play2.png" class="icon-play icons" alt="" />Play</span
-      >
+    <button class="custom-button-start" @click="iniciar" :disabled="cronometroRodando">
+      <div class="icon-container-start">
+        <font-awesome-icon :icon="['fas', 'play']" />
+    </div>
+    <div class="text-container">
+      Play
+  </div>
     </button>
-    <button class="btn-border" @click="finalizar" :disabled="!cronometroRodando">
-      <span><img src="../assets/icons/stop-button.png" class="icon icons" alt="" />Stop</span>
-    </button>
+    <button class="custom-button" @click="finalizar" :disabled="!cronometroRodando">
+  <div class="icon-container">
+    <font-awesome-icon class="font" :icon="['fas', 'check']" />
+  </div>
+  <div class="text-container">
+    Concluir
+  </div>
+</button>
   </div>
   </div>
 </template>
@@ -56,6 +64,24 @@ export default defineComponent({
   height: 25px;
 }
 
+.btn-concluir {
+  background-color: #2ac470;
+  font-weight: 600;
+  color: white;
+  border: none !important;
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-concluir:hover {
+  background-color: #24b666 !important;
+}
+
+.btn-concluir .font {
+  background: #2ac470;
+  border-right: 1px solid black;
+}
+
 .icon-play {
   width: 1.5rem;
   height: auto;
@@ -84,6 +110,74 @@ img {
 
 span{
   cursor: pointer;
+}
+
+.custom-button {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  background-color: #24b666;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  width: 70%;
+}
+
+.custom-button:hover {
+  background-color: #239b56;
+}
+
+.icon-container {
+  background-color: #239b56;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px 0 0 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.text-container {
+  padding: 10px 20px;
+}
+
+.font {
+  font-size: 18px;
+}
+
+.custom-button-start {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  background-color: #3296d4;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  width: 70%;
+}
+
+.icon-container-start {
+  background-color: #2c87c0;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px 0 0 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.custom-button-start:hover {
+  background-color: #2c87c0;
 }
 
 .ajuste-cronometro{

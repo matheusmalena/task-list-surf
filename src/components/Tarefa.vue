@@ -139,7 +139,7 @@ export default defineComponent({
   padding: 20px 15px;
   text-align: center;
   white-space: nowrap;
-  width: 100% !important;
+  width: 0% !important;
 }
 
 }

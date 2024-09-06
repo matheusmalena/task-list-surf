@@ -11,15 +11,15 @@
           <th>Nome</th>
           <th>Ações</th>
           <th>
-            <button @click="deletarTodosProjetos" class="btn-limpar-todas" >Excluir tudo  <span class="material-symbols-outlined"> delete </span></button>
+            <button @click="deletarTodosProjetos" class="btn-limpar-todas" > <p> Excluir tudo </p> <span class="material-symbols-outlined"> delete </span></button>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="projeto in projetos" :key="projeto.id">
-          <td>{{ projeto.id }}</td>
-          <td>{{ projeto.nome }}</td>
-          <td>
+          <td data-label="ID" >{{ projeto.id }}</td>
+          <td data-label="Nome" >{{ projeto.nome }}</td>
+          <td data-label="Ações" >
             <router-link :to="`/projetos/${projeto.id}`">
               <span class="material-symbols-outlined icon-edit">edit</span>
             </router-link>
@@ -179,14 +179,14 @@ form {
 }
 
 .btn-delete{
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
     text-decoration: none;
 }
 
 .btn-delete span{
     background: transparent;
-    color: red;
+  color: red;
 }
 
 .btn-limpar-todas {
@@ -213,20 +213,88 @@ form {
 
 .icon-edit, .btn-delete span {
   transition: transform 0.3s ease-in-out;
-  display: inline-block;
 }
 
 .icon-edit:hover, .btn-delete span:hover {
   transform: translateY(-5px);
 }
 
-.button:hover{
+.button:hover {
   background-color: var(--brown-hover);
 }
+
 @media screen and (max-width: 760px) {
-  input {
-    width: 60%;
-    padding: 0.4rem;
+  thead {
+    display: none;
+  }
+
+  tbody {
+    display: block;
+    width: 100%;
+  }
+
+  tbody tr {
+    display: block;
+    margin-bottom: 0.625rem;
+    border-bottom: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  tbody td {
+    display: block;
+    text-align: right;
+    position: relative;
+    padding: 0.75rem;
+    border-bottom: 1px solid #ddd;
+    font-size: 12px;
+    width: 100%;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #037a7a;
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-right: 1rem;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  tbody td[data-label="ID"]::before {
+    content: "ID";
+  }
+  tbody td[data-label="Nome"]::before {
+    content: "Nome";
+  }
+  tbody td[data-label="Ações"]::before {
+    content: "Ações";
+  }
+  tbody td[data-label=""]::before {
+    content: " ";
+  }
+
+  tbody td {
+    text-align: right;
+    padding-left: 50%; /* Alinha o conteúdo da célula à direita */
+  }
+
+  .btn-limpar-todas {
+    font-size: 12px;
+    width: 40px;
+  }
+
+  .btn-limpar-todas p {
+    display: none;
+  }
+
+  tbody tr td {
+    display: block !important;
+    width: 100% !important;
   }
 }
 </style>

@@ -60,6 +60,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: white !important;
 }
 
 body, strong {
@@ -103,25 +104,20 @@ main.modo-escuro {
     display: none;
   }
 
-  @media screen and (max-width: 760px){
+  @media screen and (max-width: 760px) {
   main {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Ajuste para alinhar corretamente */
-    height: 100vh; /* Força a altura da tela inteira */
-    overflow: hidden;
+    flex-direction: column; /* Alinha os itens em coluna para telas menores */
   }
 
   .bg-fundo {
-    width: 100% !important;
+    width: 100%;
     height: auto;
-    flex-grow: 1; /* Ocupa o espaço restante */
+    flex-grow: 1;
   }
 
   .sombra {
     width: 100% !important;
-    flex-grow: 1; /* Faz o conteúdo crescer para preencher a tela */
-    overflow-y: auto;
+    flex-grow: 1;
   }
 
   .notificacao-tela-grande {

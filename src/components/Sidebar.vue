@@ -112,18 +112,17 @@ li {
 @media screen and (max-width: 768px) {
   header {
     width: 100%;
-    padding: 2.5rem;
-    height: 100%;
-    padding: 6.5rem;
+    padding: 1rem;
+    height: auto;
   }
+
   .fundo-bg {
     width: 100%;
-    height: 100%;
+    height: auto;
   }
 
   video {
     width: 60%;
-    height: auto;
   }
 
   ul {

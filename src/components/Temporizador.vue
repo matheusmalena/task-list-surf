@@ -194,6 +194,10 @@ span{
     margin: 0;
   }
 
+  .custom-button-start, .custom-button {
+    width: 100% !important;
+  }
+
   .ajuste-cronometro{
     display: flex;
     flex-direction: row;

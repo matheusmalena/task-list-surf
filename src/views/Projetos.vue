@@ -23,5 +23,7 @@ export default defineComponent ({
     color: #598e98;
     font-weight: 600;
     font-family: "Poppins", sans-serif;
+    font-size: 30px;
+    margin: 1rem 0;
   }
 </style>

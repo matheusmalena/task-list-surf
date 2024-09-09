@@ -14,6 +14,7 @@
           </tr>
         </thead>
       </table>
+      <h1>Tarefas</h1>
       <Tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa" />
     </div>
     <Box v-if="listaEstaVazia" class="box-nodata box">
@@ -65,6 +66,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
+h1{
+    color: #598e98;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+  }
+
 .box strong {
   color: rgb(99, 99, 99) !important;
 }

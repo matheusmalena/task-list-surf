@@ -136,7 +136,7 @@ tbody tr td {
   border: none;
   text-align: center;
   word-wrap: break-word;
-  width: 30% !important;
+  width: 30%;
   color: black;
 }
 
@@ -242,14 +242,13 @@ form {
     width: 100%;
   }
 
-  tbody td {
+  tbody tr td {
     display: block;
     text-align: right;
     position: relative;
     padding: 0.75rem;
-    border-bottom: 1px solid #ddd;
     font-size: 12px;
-    width: 100%;
+    width: 40% !important;
   }
 
   tbody td::before {
@@ -280,7 +279,7 @@ form {
 
   tbody td {
     text-align: right;
-    padding-left: 50%; /* Alinha o conteúdo da célula à direita */
+    padding-left: 50%;
   }
 
   .btn-limpar-todas {

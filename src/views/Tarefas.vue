@@ -25,12 +25,13 @@
 
 <script lang="ts">
 import { defineComponent, computed } from "vue";
-import { useStore } from "@/store/index";
 import Formulario from "../components/Formulario.vue";
 import Tarefa from "../components/Tarefa.vue";
 import Box from "../components/Box.vue";
+import { useStore } from "@/store";
 import ITarefa from "../interfaces/ITarefa";
-import { ADICIONA_TAREFA } from "@/store/tipo-mutacoes";
+import { ADICIONA_TAREFA, NOTIFICAR } from "@/store/tipo-mutacoes";
+import { TipoNotificacao } from "@/interfaces/INotificacao";
 
 export default defineComponent({
   name: "Tarefas",
@@ -47,6 +48,11 @@ export default defineComponent({
 
     const salvarTarefa = (tarefa: ITarefa) => {
       store.commit(ADICIONA_TAREFA, tarefa);
+      store.commit(NOTIFICAR, {
+          titulo: 'Tarefa salva!',
+          texto: 'Sua tarefa foi adicionada na lista!',
+          tipo: TipoNotificacao.SUCESSO
+        })
     };
 
     return {

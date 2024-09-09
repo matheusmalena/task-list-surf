@@ -23,8 +23,9 @@
 import { defineComponent, PropType } from "vue";
 import Cronometro from "./Cronometro.vue";
 import ITarefa from "../interfaces/ITarefa";
-import { useStore } from '@/store/index';
-import { EXCLUIR_TAREFA } from '@/store/tipo-mutacoes';
+import { useStore } from '@/store';
+import { EXCLUIR_TAREFA, NOTIFICAR } from '@/store/tipo-mutacoes';
+import { TipoNotificacao } from "@/interfaces/INotificacao";
 
 export default defineComponent({
   name: "Tarefa",
@@ -43,6 +44,11 @@ export default defineComponent({
     const excluirTarefa = () => {
       if (props.tarefa) {
         store.commit(EXCLUIR_TAREFA, props.tarefa.descricao);
+        store.commit(NOTIFICAR, {
+          titulo: 'Tarefa excluida!',
+          texto: 'Sua tarefa foi removida da lista!',
+          tipo: TipoNotificacao.ATENCAO
+        })
       }
     };
 

@@ -1,26 +1,32 @@
 <template>
-  <main class="d-flex app-celular">
+  <main class="app-container">
     <Spinner v-if="isLoading" />
-    <div class="bg-fundo" v-else>
-      <div class="notificacao-tela-celular">
-        <Notificacoes></Notificacoes>
-      </div>
-      <Sidebar />
+    <div v-if="!isAuthenticated" class="full-screen">
+      <router-view></router-view>
     </div>
-    <div class="flex-grow-1 justify-content-center align-items-center sombra">
-      <div class="notificacao-tela-grande">
-        <Notificacoes></Notificacoes>
+    <div v-else class="content-container">
+      <div class="sidebar-container">
+        <Sidebar />
       </div>
-      <router-view @loaded="setLoading(false)"></router-view>
+      <div class="main-content">
+        <div class="notificacao-tela-celular">
+          <Notificacoes></Notificacoes>
+        </div>
+        <div class="notificacao-tela-grande">
+          <Notificacoes></Notificacoes>
+        </div>
+        <router-view @loaded="setLoading(false)"></router-view>
+      </div>
     </div>
   </main>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 import Notificacoes from './components/Notificacoes.vue';
 import Sidebar from './components/Sidebar.vue';
 import Spinner from './components/Spinner.vue';
+import { useStore } from './store';
 
 export default defineComponent({
   name: 'App',
@@ -30,6 +36,7 @@ export default defineComponent({
     Spinner,
   },
   setup() {
+    const store = useStore();
     const isLoading = ref(true);
 
     const setLoading = (status: boolean) => {
@@ -40,17 +47,19 @@ export default defineComponent({
       setLoading(false);
     }, 3000);
 
+    const isAuthenticated = computed(() => store.getters['auth/isAuthenticated']);
+
     return {
       isLoading,
-      setLoading
+      setLoading,
+      isAuthenticated,
     };
   }
 });
 </script>
 
-
 <style>
-:root{
+:root {
   --brown: #d4bfa3;
   --brown-hover: #bba88f;
   --blue-hover: linear-gradient(0deg, rgba(32, 75, 90, 1) 0%, rgba(119, 177, 185, 1) 100%);
@@ -67,9 +76,6 @@ body, strong {
   color: black !important;
 }
 
-.lista {
-  padding: 1.25rem;
-}
 main {
   --bg-primario: #fff;
   --texto-primario: #000;
@@ -77,47 +83,55 @@ main {
   height: 100%;
   overflow: hidden;
 }
-main.modo-escuro {
-  --bg-primario: #2b2d42;
-  --texto-primario: #ddd;
+
+.full-screen {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.conteudo {
-  background-color: var(--bg-primario);
+
+.content-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 
-.sombra{
-    width: 75% !important;
-    overflow-y: auto;
-  }
+.sidebar-container {
+  width: 18%;
+  height: 100%;
+  border: 2px solid red; /* Adiciona uma borda temporária para depuração */
+  overflow-y: auto;
+}
 
-.bg-fundo{
-    width: 18%;
-    height: 100%;
-    overflow-y: auto;
-  }
+.main-content {
+  width: 82%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
 
-  .notificacao-tela-grande{
-    display: block;
-  }
+.notificacao-tela-grande {
+  display: block;
+}
 
-  .notificacao-tela-celular{
-    display: none;
-  }
+.notificacao-tela-celular {
+  display: none;
+}
 
-  @media screen and (max-width: 760px) {
+@media screen and (max-width: 760px) {
   main {
-    flex-direction: column; /* Alinha os itens em coluna para telas menores */
+    flex-direction: column;
   }
 
-  .bg-fundo {
+  .sidebar-container {
     width: 100%;
     height: auto;
-    flex-grow: 1;
   }
 
-  .sombra {
-    width: 100% !important;
-    flex-grow: 1;
+  .main-content {
+    width: 100%;
   }
 
   .notificacao-tela-grande {

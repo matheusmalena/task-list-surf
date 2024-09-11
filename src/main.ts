@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheck, faPlay, faFilter } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faPlay, faFilter, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
@@ -11,7 +11,7 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import roteador from '../src/roteador/index';
 import { key, store } from './store';
 
-library.add(faCheck, faPlay, faFilter);
+library.add(faCheck, faPlay, faFilter, faChevronRight, faChevronLeft);
 
 const app = createApp(App);
 app.use(roteador).use(store, key);

@@ -4,15 +4,16 @@
   </div>
   <div class="list-group gap-4 m-5">
     <div class="div-table">
-      <div class="card-filter" >
-        <font-awesome-icon :icon="['fas', 'filter']" class="filter-icon" />
-      <input
-        type="text"
-        v-model="filtro"
-        placeholder="Filtrar..."
-        class="form-control filter "
-      />
-    </div>
+      <div class="card-filter">
+        <h1>Tarefas</h1>
+        <!-- <font-awesome-icon :icon="['fas', 'filter']" class="filter-icon" /> -->
+        <input
+          type="text"
+          v-model="filtro"
+          placeholder="Filtrar..."
+          class="form-control filter"
+        />
+      </div>
       <table>
         <thead>
           <tr>
@@ -23,13 +24,18 @@
           </tr>
         </thead>
       </table>
-      <h1>Tarefas</h1>
-      <Tarefa v-for="(tarefa, index) in tarefasFiltradas" :key="index" :tarefa="tarefa" />
+      <h1 class="h1-web" >Tarefas</h1>
+      <Tarefa v-for="(tarefa, index) in paginatedTarefas" :key="index" :tarefa="tarefa" />
     </div>
     <Box v-if="listaEstaVazia" class="box-nodata box">
       <strong> Você não está muito produtivo hoje</strong>
       <img src="../assets/no-data.gif" alt="" />
     </Box>
+    <Pagination
+      :currentPage="currentPage"
+      :totalPages="totalPages"
+      @update:currentPage="currentPage = $event"
+    />
   </div>
 </template>
 
@@ -38,6 +44,7 @@ import { defineComponent, computed, ref } from "vue";
 import Formulario from "../components/Formulario.vue";
 import Tarefa from "../components/Tarefa.vue";
 import Box from "../components/Box.vue";
+import Pagination from "../components/Pagination.vue";
 import { useStore } from "@/store";
 import ITarefa from "../interfaces/ITarefa";
 import { ADICIONA_TAREFA, NOTIFICAR } from "@/store/tipo-mutacoes";
@@ -49,20 +56,33 @@ export default defineComponent({
     Formulario,
     Tarefa,
     Box,
+    Pagination
   },
   setup() {
     const store = useStore();
     const filtro = ref("");
+    const currentPage = ref(1);
+    const itemsPerPage = 5;
 
     const tarefas = computed(() => store.state.tarefas);
 
-    const tarefasFiltradas = computed(() =>
+    const filteredTarefas = computed(() =>
       tarefas.value.filter((tarefa) =>
         tarefa.descricao.toLowerCase().includes(filtro.value.toLowerCase())
       )
     );
 
-    const listaEstaVazia = computed(() => tarefasFiltradas.value.length === 0);
+    const totalPages = computed(() =>
+      Math.ceil(filteredTarefas.value.length / itemsPerPage)
+    );
+
+    const paginatedTarefas = computed(() => {
+      const start = (currentPage.value - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      return filteredTarefas.value.slice(start, end);
+    });
+
+    const listaEstaVazia = computed(() => paginatedTarefas.value.length === 0);
 
     const salvarTarefa = (tarefa: ITarefa) => {
       store.commit(ADICIONA_TAREFA, tarefa);
@@ -75,22 +95,33 @@ export default defineComponent({
 
     return {
       filtro,
-      tarefasFiltradas,
+      paginatedTarefas,
       listaEstaVazia,
       salvarTarefa,
+      currentPage,
+      totalPages
     };
-  },
+  }
 });
 </script>
 
-<style scoped>
-h1 {
-  display: none;
-}
 
+<style scoped>
 .box strong {
   color: rgb(99, 99, 99) !important;
 }
+
+.h1-web {
+  display: none;
+}
+
+h1 {
+    display: block;
+    color: #598e98;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+  }
 
 .box-nodata {
   display: flex;
@@ -124,7 +155,7 @@ table {
 
 .card-filter {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
 }
@@ -139,16 +170,9 @@ table {
   thead {
     display: none;
   }
-  h1 {
-    display: block;
-    color: #598e98;
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-  }
 
   .filter {
-  width: 100%;
-} 
+    width: 100%;
+  }
 }
 </style>

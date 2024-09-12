@@ -73,6 +73,7 @@ export default defineComponent({
   background-color: white;
   color: #598e98;
   border: none;
+  box-shadow: 1px 1px #c9c9c9;
   border-radius: 5px;
   padding: 0.2rem 0.3rem;
   cursor: pointer;

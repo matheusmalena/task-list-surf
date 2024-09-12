@@ -4,19 +4,23 @@
     <button class="pagination-button" :disabled="currentPage === 1" @click="previousPage">
       <font-awesome-icon class="icon" :icon="['fas', 'chevron-left']" />
     </button>
-    <span class="pagination-info">Página {{ currentPage }} de {{ totalPages }}</span>
-    <button
-      class="pagination-button"
-      :disabled="currentPage === totalPages"
-      @click="nextPage"
-    >
+    <span v-for="page in totalPages" :key="page" class="pagination-info">
+      <button
+        class="pagination-page"
+        :class="{ active: page === currentPage }"
+        @click="goToPage(page)"
+      >
+        {{ page }}
+      </button>
+    </span>   
+    <button class="pagination-button" :disabled="currentPage === totalPages" @click="nextPage">
       <font-awesome-icon class="icon" :icon="['fas', 'chevron-right']" />
     </button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Pagination",
@@ -43,9 +47,14 @@ export default defineComponent({
       }
     };
 
+    const goToPage = (page: number) => {
+      emit("update:currentPage", page);
+    };
+
     return {
       previousPage,
       nextPage,
+      goToPage,
     };
   },
 });
@@ -61,8 +70,8 @@ export default defineComponent({
 }
 
 .pagination-button {
-  background-color: #598e98;
-  color: white;
+  background-color: white;
+  color: #598e98;
   border: none;
   border-radius: 5px;
   padding: 0.2rem 0.3rem;
@@ -70,7 +79,6 @@ export default defineComponent({
 }
 
 .pagination-button:disabled {
-  background-color: #c4c4c4;
   cursor: not-allowed;
 }
 
@@ -78,4 +86,22 @@ export default defineComponent({
   font-size: 1rem;
 }
 
+.pagination-page {
+  background-color: white;
+  color: #598e98;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+}
+
+.pagination-page.active {
+  background-color: #598e98;
+  color: white;
+}
+
+.pagination-page:hover {
+  background-color: #598e98;
+  color: white;
+}
 </style>
+

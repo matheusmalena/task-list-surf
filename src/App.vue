@@ -87,7 +87,6 @@ main.modo-escuro {
 
 .sombra{
     width: 75% !important;
-    overflow-y: auto;
   }
 
 .bg-fundo{

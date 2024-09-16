@@ -5,14 +5,17 @@
   <div class="list-group gap-4 m-5">
     <div class="div-table">
       <div class="card-filter">
-        <h1>Tarefas</h1>
+        <div><h1>Tarefas</h1></div>
         <!-- <font-awesome-icon :icon="['fas', 'filter']" class="filter-icon" /> -->
-        <input
-          type="text"
-          v-model="filtro"
-          placeholder="Filtrar..."
-          class="form-control filter"
-        />
+        <div class="d-flex" >
+          <span class="time-work" >Tempo trabalhado: {{  formatTempoTrabalhado }}</span>
+          <input
+            type="text"
+            v-model="filtro"
+            placeholder="Filtrar..."
+            class="form-control filter"
+          />
+        </div>
       </div>
       <table>
         <thead>
@@ -24,7 +27,7 @@
           </tr>
         </thead>
       </table>
-      <h1 class="h1-web" >Tarefas</h1>
+      <h1 class="h1-web">Tarefas</h1>
       <Tarefa v-for="(tarefa, index) in paginatedTarefas" :key="index" :tarefa="tarefa" />
     </div>
     <Box v-if="listaEstaVazia" class="box-nodata box">
@@ -56,7 +59,7 @@ export default defineComponent({
     Formulario,
     Tarefa,
     Box,
-    Pagination
+    Pagination,
   },
   setup() {
     const store = useStore();
@@ -84,6 +87,19 @@ export default defineComponent({
 
     const listaEstaVazia = computed(() => paginatedTarefas.value.length === 0);
 
+    const totalTempoTrabalhado = computed(() => {
+      return filteredTarefas.value.reduce((total, tarefa) => total + (tarefa.duracaoEmSegundos || 0), 0);
+    });
+
+    const formatTempoTrabalhado = computed(() => {
+      const totalSegundos = totalTempoTrabalhado.value;
+      const horas = Math.floor(totalSegundos / 3600);
+      const minutos = Math.floor((totalSegundos % 3600) / 60);
+      const segundos = totalSegundos % 60;
+
+      return `${horas}h ${minutos}m ${segundos}s`;
+    });
+
     const salvarTarefa = (tarefa: ITarefa) => {
       store.commit(ADICIONA_TAREFA, tarefa);
       store.commit(NOTIFICAR, {
@@ -99,12 +115,12 @@ export default defineComponent({
       listaEstaVazia,
       salvarTarefa,
       currentPage,
-      totalPages
+      totalPages,
+      formatTempoTrabalhado
     };
-  }
+  },
 });
 </script>
-
 
 <style scoped>
 .box strong {
@@ -116,12 +132,12 @@ export default defineComponent({
 }
 
 h1 {
-    display: block;
-    color: #598e98;
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-  }
+  display: block;
+  color: #598e98;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
 
 .box-nodata {
   display: flex;
@@ -164,6 +180,11 @@ table {
   color: #0e4e68;
   font-size: 22px;
   text-align: center;
+}
+
+.time-work {
+  background-color: rgb(82, 221, 78);
+  padding: 0.3rem;
 }
 
 @media screen and (max-width: 768px) {

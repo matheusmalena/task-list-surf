@@ -82,6 +82,8 @@ export default defineComponent({
   text-align: center;
   white-space: nowrap;
   width: 30% !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .styled-table tbody tr {

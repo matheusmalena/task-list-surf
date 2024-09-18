@@ -74,16 +74,25 @@ export default defineComponent({
   background-color: #ffffff;
   border-radius: 8px;
   overflow: hidden;
+  table-layout: fixed;
 }
 
-.styled-table th,
+.styled-table th {
+  padding: 20px 15px;
+  text-align: center;
+  white-space: nowrap !important;
+  width: 30% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
 .styled-table td {
   padding: 20px 15px;
   text-align: center;
-  white-space: nowrap;
-  width: 30% !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  width: 30%;
 }
 
 .styled-table tbody tr {

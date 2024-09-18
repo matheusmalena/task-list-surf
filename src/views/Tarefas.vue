@@ -166,13 +166,17 @@ table {
 }
 
 .filter {
-  width: 50%;
+  width: 60%;
 }
 
 .div-right {
   display: flex;
-  width: 35%;
+  width: 40%;
   gap: 1rem;
+}
+
+.div-right span {
+  width: 230px;
 }
 
 .card-filter {
@@ -203,5 +207,43 @@ table {
   .filter {
     width: 100%;
   }
+
+  .filter {
+  width: 50%;
+}
+
+.div-right {
+  display: flex;
+  width: 60%;
+  gap: 1rem;
+}
+
+.div-right span {
+  font-size: 14px;
+  width: 250px;
+}
+}
+
+@media screen and (max-width: 410px) {
+.div-right {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 60%;
+  gap: 1rem;
+}
+
+.card-filter {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter {
+  width: 100%;
+}
+
+.div-right span {
+  font-size: 14px;
+  width: 100%;
+}
 }
 </style>

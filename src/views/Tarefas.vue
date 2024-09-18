@@ -7,8 +7,8 @@
       <div class="card-filter">
         <div><h1>Tarefas</h1></div>
         <!-- <font-awesome-icon :icon="['fas', 'filter']" class="filter-icon" /> -->
-        <div class="d-flex" >
-          <span class="time-work" >Tempo trabalhado: {{  formatTempoTrabalhado }}</span>
+        <div class="div-right" >
+          <span class="time-work" >  Total de horas: <strong>{{  formatTempoTrabalhado }}</strong> </span>
           <input
             type="text"
             v-model="filtro"
@@ -166,7 +166,13 @@ table {
 }
 
 .filter {
-  width: 25%;
+  width: 50%;
+}
+
+.div-right {
+  display: flex;
+  width: 35%;
+  gap: 1rem;
 }
 
 .card-filter {
@@ -183,8 +189,10 @@ table {
 }
 
 .time-work {
-  background-color: rgb(82, 221, 78);
-  padding: 0.3rem;
+  background-color: #2ac470;
+  padding: 0.3rem 1rem;
+  color: white;
+  border-radius: 8px;
 }
 
 @media screen and (max-width: 768px) {

@@ -103,6 +103,10 @@ main.modo-escuro {
     display: none;
   }
 
+  .select:not(.is-multiple):not(.is-loading):after {
+    border: .125em solid black !important;
+  }
+
   @media screen and (max-width: 760px) {
   main {
     flex-direction: column; /* Alinha os itens em coluna para telas menores */

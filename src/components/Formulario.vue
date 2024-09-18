@@ -158,7 +158,7 @@ export default defineComponent({
 .selecionar-projeto {
   background-color: white !important;
   color: black !important;
-  width: 100% !important;;
+  width: 100% !important;
 }
 
 @media screen and (max-width: 760px) {

@@ -166,13 +166,14 @@ table {
 }
 
 .filter {
-  width: 60%;
+  width: 40%;
 }
 
 .div-right {
   display: flex;
-  width: 40%;
+  width: 50%;
   gap: 1rem;
+  justify-content: end;
 }
 
 .div-right span {
@@ -197,6 +198,15 @@ table {
   padding: 0.3rem 1rem;
   color: white;
   border-radius: 8px;
+  width: 35%;
+}
+
+@media screen and (max-width: 1630px) {
+
+  .time-work {
+  width: 50%;
+}
+
 }
 
 @media screen and (max-width: 768px) {

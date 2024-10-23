@@ -16,14 +16,14 @@
         </button>
       </div>
       <div>
-        <div class="select">
-          <select class="selecionar-projeto" v-model="idProjeto">
-            <option value="">Selecione o projeto</option>
-            <option :value="projeto.id" v-for="projeto in projetos" :key="projeto.id">
-              {{ projeto.nome }}
-            </option>
-          </select>
-        </div>
+        <div class="select-wrapper">
+        <select class="selecionar-projeto" v-model="idProjeto">
+          <option value="">Selecione o projeto</option>
+          <option :value="projeto.id" v-for="projeto in projetos" :key="projeto.id">
+            {{ projeto.nome }}
+          </option>
+        </select>
+      </div>
       </div>
 
       <div class="d-flex row align-items temporizador">
@@ -126,6 +126,43 @@ export default defineComponent({
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.selecionar-projeto {
+  -webkit-appearance: none; /* Remove a aparência padrão */
+  -moz-appearance: none; /* Remove a aparência padrão */
+  appearance: none; /* Remove a aparência padrão */
+  background-color: white;
+  color: black;
+  padding: 10px;
+  padding-right: 40px; /* Espaço para a seta */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Adiciona a seta para baixo usando ::after */
+.select-wrapper::after {
+  content: '\25BC'; /* Seta para baixo em Unicode */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #000000; /* Cor da seta */
+  pointer-events: none;
+}
+
+.selecionar-projeto:focus {
+  border-color: #666;
+  outline: none;
+}
+
 .btnLimparFiltro {
   background: none;
   color: #9ca7b0 !important;
@@ -166,11 +203,11 @@ export default defineComponent({
     justify-content: space-around;
     flex-direction: column;
     gap: 12px;
-    width: 100%; /* Garante que preencha a largura total */
+    width: 100%;
   }
 
   .form-control {
-    width: 100%; /* Ajusta o input para ocupar a largura completa */
+    width: 100%;
   }
 
   .temporizador {

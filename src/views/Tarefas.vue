@@ -12,7 +12,7 @@
           <input
             type="text"
             v-model="filtro"
-            placeholder="Filtrar..."
+            placeholder="Filtrar tarefas..."
             class="form-control filter"
           />
         </div>

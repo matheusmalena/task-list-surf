@@ -23,7 +23,7 @@
             <td class="th">Tarefa</td>
             <td class="th">Projeto</td>
             <td class="th">Tempo</td>
-            <td class="th"></td>
+            <td class="th">Ações</td>
           </tr>
         </thead>
       </table>

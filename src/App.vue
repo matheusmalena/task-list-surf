@@ -91,7 +91,6 @@ main.modo-escuro {
 
 .bg-fundo{
     width: 18%;
-    height: 100%;
     overflow-y: auto;
   }
 

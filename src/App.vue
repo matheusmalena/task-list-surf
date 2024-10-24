@@ -92,6 +92,7 @@ main.modo-escuro {
 .bg-fundo{
     width: 18%;
     overflow-y: auto;
+    height: 100vh;
   }
 
   .notificacao-tela-grande{
@@ -108,12 +109,13 @@ main.modo-escuro {
 
   @media screen and (max-width: 760px) {
   main {
-    flex-direction: column; /* Alinha os itens em coluna para telas menores */
+    flex-direction: column;
   }
 
   .bg-fundo {
     width: 100%;
     flex-grow: 1;
+    height: auto;
   }
 
   .sombra {

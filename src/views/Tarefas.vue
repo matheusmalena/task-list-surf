@@ -158,7 +158,6 @@ table {
 }
 
 .th {
-  width: 30% !important;
   padding: 18px 15px;
   text-align: center;
   white-space: nowrap;

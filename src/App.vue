@@ -113,7 +113,6 @@ main.modo-escuro {
 
   .bg-fundo {
     width: 100%;
-    height: auto;
     flex-grow: 1;
   }
 
